@@ -1,0 +1,22 @@
+{
+  "name": "virtual-pet",
+  "version": "1.0.0",
+  "description": "This is my first project through Manchester Codes",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/James-Sample/virtual-pet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/James-Sample/virtual-pet/issues"
+  },
+  "homepage": "https://github.com/James-Sample/virtual-pet#readme",
+  "devDependencies": {
+    "jest": "^29.2.1"
+  }
+}
