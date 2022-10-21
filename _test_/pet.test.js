@@ -20,7 +20,7 @@ describe('constructor', () => {
         expect(pet.age).toEqual(1);
     });
 });
-    describe('becomes hungry and unfit with age', () => {
+    describe('becomes hungry and unfit with aging', () => {
         it('increases hunger and reduces fitness as the pet ages', () => {
             const pet = new Pet ('Fido');
             expect(pet.hunger).toEqual(0);
