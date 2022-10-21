@@ -1,3 +1,5 @@
+
+const MAXIMUM_FITNESS = 10;
 const Pet = require('../src/pet');
 
 describe('constructor', () => {
@@ -24,10 +26,38 @@ describe('constructor', () => {
         it('increases hunger and reduces fitness as the pet ages', () => {
             const pet = new Pet ('Fido');
             expect(pet.hunger).toEqual(0);
-            expect(pet.fitness).toEqual(10);
+            expect(pet.fitness).toEqual(MAXIMUM_FITNESS);
             pet.growUp();
             expect(pet.hunger).toBe(5);
             expect(pet.fitness).toBe(7);
         });
+    })
+    describe('walking to improve fitness', () => {
+        it('walking increases the pets fitness', () => {
+            const pet = new Pet ('Fido');
+            pet.fitness = 4;
+            pet.walk();
+            expect(pet.fitness).toEqual(8);
+        })
+        it('tests if fitness can reach 11', () => {
+            const pet = new Pet ('Fido');
+            pet.fitness = 8;
+            pet.walk();
+            expect(pet.fitness).toBe(MAXIMUM_FITNESS);
+        })
+    })
+    describe('pet getting hungry', () => {
+        it('decreases hunger level', () => {
+            const pet = new Pet('Fido');
+            pet.hunger = 10;
+            pet.feed()
+            expect(pet.hunger).toBe(7);
+        });
+        it('checks hunger cant be less than 0', () => {
+                const pet = new Pet('Fido');
+                pet.hunger = 2;
+                pet.feed()    
+            expect(pet.hunger).toBe(0);
+        });  
     });
 
