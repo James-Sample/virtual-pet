@@ -2,6 +2,7 @@
 const MAXIMUM_FITNESS = 10;
 const HUNGRY = 5;
 const UNFIT = 3;
+const MAX_AGE = 30;
 const Pet = require('../src/pet');
 const pet = new Pet('Fido');
 const FITNESS = pet.fitness;
@@ -50,9 +51,9 @@ describe('All methods are below', () => {
         })
         it('decreases hunger level', () => {
             pet;
-            pet.hunger = 10;
+            pet.hunger = 9;
             pet.feed()
-            expect(pet.hunger).toBe(7);
+            expect(pet.hunger).toBe(6);
         });
         it('checks hunger cant be less than 0', () => {
             pet;
@@ -79,12 +80,19 @@ describe('All methods are below', () => {
             pet;
             expect(pet.isAlive).toBeTruthy;
             pet.fitness = 0;
-            pet.isAlive();
             expect(pet.isAlive).toBeFalsy;
             pet.hunger = 10;
             expect(pet.isAlive).toBeFalsy
-            pet.age = 30;
+            pet.age = MAX_AGE;
             expect(pet.isAlive).toBeFalsy;
         })
+        it('throws an error if the pet is dead', () => {
+            pet;
+            pet.age = MAX_AGE;
+            expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+            expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+            expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
+            expect(pet.checkUp()).toBe('Your pet is no longer alive :(');
+        }); 
     });
 
