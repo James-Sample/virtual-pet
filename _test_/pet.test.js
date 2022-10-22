@@ -1,5 +1,7 @@
 
 const MAXIMUM_FITNESS = 10;
+const HUNGRY = 5;
+const UNFIT = 3;
 const Pet = require('../src/pet');
 
 describe('constructor', () => {
@@ -58,6 +60,21 @@ describe('constructor', () => {
                 pet.hunger = 2;
                 pet.feed()    
             expect(pet.hunger).toBe(0);
-        });  
+        });
+        it('allows the pet to respond to you', () => {
+            const pet = new Pet('Fido');
+            pet.fitness = 3;
+            pet.checkUp();
+            expect(pet.checkUp()).toBe('I need a walk')
+            pet.hunger = 5;
+            pet.fitness = 4;
+            expect(pet.checkUp()).toBe('I am hungry')
+            pet.fitness = 3 
+            pet.hunger = 5;
+            expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+            pet.fitness = 4 
+            pet.hunger = 4;
+            expect(pet.checkUp()).toBe('I feel great!')
+        })  
     });
 
