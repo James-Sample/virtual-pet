@@ -5,6 +5,7 @@ const UNFIT = 3;
 const MAX_AGE = 30;
 const Pet = require('../src/pet');
 const pet = new Pet('Fido');
+const child = new Pet('Snoop');
 const FITNESS = pet.fitness;
 const HUNGER = pet.hunger;
 const AGE = pet.age;
@@ -94,5 +95,11 @@ describe('All methods are below', () => {
             expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
             expect(pet.checkUp()).toBe('Your pet is no longer alive :(');
         }); 
+        it ('makes the pet have a baby', () => {
+            pet;
+            expect(this.children).toEqual();
+            pet.adoptChild(child);
+            expect(pet.children[0]).toBe('Snoop');
+        })
     });
 

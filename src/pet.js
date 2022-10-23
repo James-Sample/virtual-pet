@@ -4,6 +4,7 @@ function Pet(name) {
     this.age = 0;
     this.hunger = 0;
     this.fitness = 10;
+    this.children = [];
 }
 Pet.prototype = {
     get isAlive() {
@@ -51,10 +52,7 @@ Pet.prototype.checkUp = function() {
     }
     else return 'I feel great!'
 }
-//Pet.prototype.isAlive = function () {
-  //  if (this.fitness <= 0) return false;
-    //if (this.hunger >= 10) return false;
-    //if (this.age >= 30) return false;
-    //else return true;
-//}
+Pet.prototype.adoptChild = function(child) {
+    this.children.push(child.name);
+}
 module.exports = Pet;
